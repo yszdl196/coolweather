@@ -29,7 +29,7 @@ public class CoolWeatherDB {
 	}
 	
 	public synchronized static CoolWeatherDB getInstance(Context context) {
-		if(coolWeatherDB != null) {
+		if(coolWeatherDB == null) {
 			coolWeatherDB = new CoolWeatherDB(context);
 		}
 		return coolWeatherDB;
@@ -74,7 +74,7 @@ public class CoolWeatherDB {
 	
 	public List<City> loadCities(int provinceId) {
 		List<City> list = new ArrayList<City>();
-		Cursor cursor = db.query("City", null, "provice_id = ?", new String[] {String.valueOf(provinceId)}, null, null, null);
+		Cursor cursor = db.query("City", null, "province_id = ?", new String[] {String.valueOf(provinceId)}, null, null, null);
 		if(cursor.moveToFirst()) {
 			do {
 				City city = new City();
@@ -96,6 +96,7 @@ public class CoolWeatherDB {
 			ContentValues values = new ContentValues();
 			values.put("county_name", county.getCountyName());
 			values.put("county_code", county.getCountyCode());
+			values.put("city_id", county.getCityId());
 			db.insert("County", null, values);
 		}
 	}
