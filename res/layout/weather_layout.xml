@@ -12,9 +12,9 @@
             android:id="@+id/switch_city"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_launcher"/>
+            android:background="@drawable/home"/>
         
         <TextView 
             android:id="@+id/city_name"
